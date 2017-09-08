@@ -11,7 +11,7 @@ __version__ = None
 exec(read('civis_jupyter_ext/version.py'))
 
 setup(
-    name="civis_jupyter_ext",
+    name="civis-jupyter-extensions",
     version=__version__,
     author="Civis Analytics Inc",
     author_email="opensource@civisanalytics.com",
