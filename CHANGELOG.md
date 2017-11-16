@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Fixed an issue where databases with spaces in their names could not be used
-  the line magic splits on spaces. It now splits on semicolons.
+  the line magic splits on spaces. It now splits on semicolons. (#8)
 
 ## [0.1.2] - 2017-09-20
 
