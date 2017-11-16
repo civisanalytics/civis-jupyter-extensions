@@ -39,7 +39,7 @@ def test_cell_magic(civis_mock, rows):
     [(['a', 'b'], [1, 2]), ([], [])])
 @mock.patch('civis_jupyter_ext.magics.query.civis')
 def test_line_magic(civis_mock, cols, sep):
-    sql = 'select * from dummy.table;'
+    sql = 'select * from dummy.table'
     database = 'my-database'
     line = sep.join([database, sql])
     test_df = pd.DataFrame({'c1': cols[0], 'c2': cols[1]})

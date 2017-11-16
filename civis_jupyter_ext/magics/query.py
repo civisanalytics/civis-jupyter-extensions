@@ -15,7 +15,7 @@ def magic(line, cell=None):
 
     if cell is None:
         # Not using maxsplit kwarg b/c it is not compatible w/ Python 2
-        items = line.split(';', 1)
+        items = [s for s in line.split(';', 1) if len(s) > 0]
         # allow spaces
         if len(items) == 1:
             database, sql = items[0].split(' ', 1)
