@@ -33,14 +33,16 @@ def test_cell_magic(civis_mock, rows):
 
 
 @pytest.mark.parametrize(
-    'sep', [' ', '; '])
+    'sep,database', [
+        (' ', 'my-database), 
+        ('; ', 'my database'),
+        ('; ', 'my-database')])
 @pytest.mark.parametrize(
     'cols',
     [(['a', 'b'], [1, 2]), ([], [])])
 @mock.patch('civis_jupyter_ext.magics.query.civis')
-def test_line_magic(civis_mock, cols, sep):
+def test_line_magic(civis_mock, cols, sep, database):
     sql = 'select * from dummy.table'
-    database = 'my-database'
     line = sep.join([database, sql])
     test_df = pd.DataFrame({'c1': cols[0], 'c2': cols[1]})
     civis_mock.io.read_civis_sql.return_value = test_df
