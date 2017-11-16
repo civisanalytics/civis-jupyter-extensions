@@ -15,7 +15,7 @@ def magic(line, cell=None):
 
     if cell is None:
         # Not using maxsplit kwarg b/c it is not compatible w/ Python 2
-        database, sql = line.split(' ', 1)
+        database, sql = line.split(';', 1)
         df = civis.io.read_civis_sql(
             sql, database.strip(), use_pandas=True, client=client)
         if len(df) == 0:
