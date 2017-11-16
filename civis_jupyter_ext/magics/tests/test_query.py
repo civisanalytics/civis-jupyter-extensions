@@ -33,8 +33,10 @@ def test_cell_magic(civis_mock, rows):
 
 
 @pytest.mark.parametrize(
-    'cols,sep',
-    [((['a', 'b'], [1, 2]), ' '), (([], []), '; ')])
+    'sep', [' ', '; '])
+@pytest.mark.parametrize(
+    'cols',
+    [(['a', 'b'], [1, 2]), ([], [])])
 @mock.patch('civis_jupyter_ext.magics.query.civis')
 def test_line_magic(civis_mock, cols, sep):
     sql = 'select * from dummy.table;'
