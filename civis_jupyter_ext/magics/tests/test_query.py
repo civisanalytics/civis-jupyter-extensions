@@ -39,7 +39,7 @@ def test_cell_magic(civis_mock, rows):
 def test_line_magic(civis_mock, cols):
     sql = 'select * from dummy.table'
     database = 'my-database'
-    line = ' '.join([database, sql])
+    line = '; '.join([database, sql])
     test_df = pd.DataFrame({'c1': cols[0], 'c2': cols[1]})
     civis_mock.io.read_civis_sql.return_value = test_df
     civis_mock.APIClient.return_value = -1
