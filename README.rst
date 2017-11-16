@@ -43,4 +43,4 @@ To get a table preview, use the cell magic like this::
 
 To return a DataFrame for further processing, use the line magic like this::
 
-    df = %civisquery my-database select * from dummy.table;
+    df = %civisquery my-database; select * from dummy.table;
