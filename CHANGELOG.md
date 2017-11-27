@@ -6,9 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## [0.1.3] - 2017-11-28
+
 ### Fixed
 - Fixed an issue where databases with spaces in their names could not be used
   the line magic splits on spaces. It now splits on semicolons. (#8)
+- Relaxed requirements on ``pandas`` so that minor versions >0.20 are also allowed (#9).
 
 ## [0.1.2] - 2017-09-20
 
