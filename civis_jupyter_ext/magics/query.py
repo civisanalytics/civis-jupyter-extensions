@@ -9,6 +9,22 @@ def magic(line, cell=None):
 
     This magic works both as a cell magic (for table previews) and a
     line magic to query a table and return a DataFrame.
+
+    Examples
+    --------
+    >>> %%civisquery
+    ... SELECT * FROM schema.table;
+
+    >>> %civisquery DATABASE QUERY
+
+    The latter can be useful if you want to use f-strings for variables
+    defined in another cell.
+
+    >>> %civisquery {DATABASE_ID} {SQL_STATEMENT}
+
+    Note that you can pass a database name or a database ID. If using the
+    line magic, your database name can't contain spaces, so you must use
+    a database ID.
     """
 
     client = civis.APIClient()
