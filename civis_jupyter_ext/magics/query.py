@@ -21,12 +21,28 @@ def magic(line, cell=None):
             database, sql = items[0].split(' ', 1)
         else:
             database, sql = items
+
+        try:
+            # if it's an integer, read_civis_sql will let it pass through
+            # if it's a string, it tries to look up a database name
+            # it's helpful to pass an int when you use the line magic
+            # but your database name has a space in it
+            database = int(database.strip())
+        except ValueError:
+            database = database.strip()
+
         df = civis.io.read_civis_sql(
-            sql.strip(), database.strip(), use_pandas=True, client=client)
+            sql.strip(), database, use_pandas=True, client=client)
         if len(df) == 0:
             df = None
     else:
         database = line.strip()
+
+        try:  # support database IDs like line magic
+            database = int(database)
+        except ValueError:
+            pass
+
         sql = cell
 
         fut = civis.io.query_civis(
