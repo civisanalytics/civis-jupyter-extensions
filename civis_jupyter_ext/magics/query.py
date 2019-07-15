@@ -12,7 +12,7 @@ def magic(line, cell=None):
 
     Examples
     --------
-    >>> %%civisquery
+    >>> %%civisquery DATABASE
     ... SELECT * FROM schema.table;
 
     >>> %civisquery DATABASE QUERY
