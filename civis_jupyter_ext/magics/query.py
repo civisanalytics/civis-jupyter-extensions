@@ -13,7 +13,8 @@ def magic(line, cell=None):
     line magic to query a table and return a DataFrame.
 
     You can pass either a database name or an ID in the below. If your database
-    name contains a space, you must quote delimit the database.
+    name contains a space and you are using the line magic, you must quote
+    delimit the database.
 
     If your version of Python supports it, F-string interpolation will work on
     the line in both the line and cell magics but not the cell of a cell magic.
@@ -42,7 +43,12 @@ def magic(line, cell=None):
 
     Query a database name with spaces
 
-    >>> %civisquery : "My Database" {SQL_STATEMENT}
+    >>> %civisquery "My Database" {SQL_STATEMENT}
+
+    Cell magic for a database with a space
+
+    >>> %%civisquery My Database
+    SELECT * FROM schema.table
     """
 
     client = civis.APIClient()
@@ -58,9 +64,9 @@ def magic(line, cell=None):
         sql = " ".join(lines)
         try:
             # if it's an integer, read_civis_sql will let it pass through
-            # if it's a string, it tries to look up a database name
-            # it's helpful to pass an int when you use the line magic
-            # but your database name has a space in it
+            # but if you pass an integer to the magic it gets coerced to
+            # a string. it will try to look up an integer string as a
+            # database name and will fail to find that name
             database = int(database.strip())
         except ValueError:
             database = database.strip()
