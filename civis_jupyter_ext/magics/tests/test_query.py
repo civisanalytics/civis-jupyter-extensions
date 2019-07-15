@@ -36,9 +36,7 @@ def test_cell_magic(civis_mock, rows):
     'sep,database', [
         (' ', '\"My Database\"'),
         (' ', 'my-database'),
-        (' ', '123'),
-        ('; ', 'my database'),
-        ('; ', 'my-database')])
+        (' ', '123')])
 @pytest.mark.parametrize(
     'cols',
     [(['a', 'b'], [1, 2]), ([], [])])
@@ -60,6 +58,7 @@ def test_line_magic(civis_mock, cols, sep, database):
     try:
         database = int(database)
     except ValueError:
-        pass
+        # if present the parser will strip the delimiter, so remove it here
+        database = database.strip('"')
     civis_mock.io.read_civis_sql.assert_called_with(
         sql, database, use_pandas=True, client=-1)
