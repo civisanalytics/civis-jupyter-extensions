@@ -34,6 +34,7 @@ def test_cell_magic(civis_mock, rows):
 
 @pytest.mark.parametrize(
     'sep,database', [
+        (' ', '\"My Database\"'),
         (' ', 'my-database'),
         (' ', '123'),
         ('; ', 'my database'),
