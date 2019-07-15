@@ -1,3 +1,5 @@
+import csv
+
 import pandas as pd
 import civis
 
@@ -46,14 +48,14 @@ def magic(line, cell=None):
     client = civis.APIClient()
 
     if cell is None:
-        # Not using maxsplit kwarg b/c it is not compatible w/ Python 2
-        items = [s for s in line.split(';', 1) if len(s) > 0]
-        # allow spaces
-        if len(items) == 1:
-            database, sql = items[0].split(' ', 1)
-        else:
-            database, sql = items
-
+        database, *lines = next(csv.reader(
+            [line],
+            delimiter=" ",
+            quotechar='"',
+            doublequote=True,
+            skipinitialspace=True)
+        )
+        sql = " ".join(lines)
         try:
             # if it's an integer, read_civis_sql will let it pass through
             # if it's a string, it tries to look up a database name
