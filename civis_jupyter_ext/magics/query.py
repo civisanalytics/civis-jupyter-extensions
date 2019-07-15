@@ -10,21 +10,37 @@ def magic(line, cell=None):
     This magic works both as a cell magic (for table previews) and a
     line magic to query a table and return a DataFrame.
 
+    You can pass either a database name or an ID in the below. If your database
+    name contains a space, you must quote delimit the database.
+
+    If your version of Python supports it, F-string interpolation will work on
+    the line in both the line and cell magics but not the cell of a cell magic.
+    This isn't currently supported in IPython.
+
     Examples
     --------
+
+    Use the cell magic
+
     >>> %%civisquery DATABASE
     ... SELECT * FROM schema.table;
 
+    Use the line magic
+
     >>> %civisquery DATABASE QUERY
 
-    The latter can be useful if you want to use f-strings for variables
-    defined in another cell.
+    Use f-strings with the line magic
 
     >>> %civisquery {DATABASE_ID} {SQL_STATEMENT}
 
-    Note that you can pass a database name or a database ID. If using the
-    line magic, your database name can't contain spaces, so you must use
-    a database ID.
+    Use f-strings with the cell magic
+
+    >>> %%civisquery {DATABASE}
+    SELECT * FROM schema.table;
+
+    Query a database name with spaces
+
+    >>> %civisquery : "My Database" {SQL_STATEMENT}
     """
 
     client = civis.APIClient()
