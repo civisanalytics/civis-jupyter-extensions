@@ -34,9 +34,9 @@ def test_cell_magic(civis_mock, rows):
 
 @pytest.mark.parametrize(
     'sep,database', [
+        (' ', '\"My Database\"'),
         (' ', 'my-database'),
-        ('; ', 'my database'),
-        ('; ', 'my-database')])
+        (' ', '123')])
 @pytest.mark.parametrize(
     'cols',
     [(['a', 'b'], [1, 2]), ([], [])])
@@ -53,5 +53,12 @@ def test_line_magic(civis_mock, cols, sep, database):
         assert df.equals(test_df), "Returned data is wrong!"
     else:
         assert df is None, "Returned data is wrong!"
+
+    # the function should coerce integer to integer, so check that here
+    try:
+        database = int(database)
+    except ValueError:
+        # if present the parser will strip the delimiter, so remove it here
+        database = database.strip('"')
     civis_mock.io.read_civis_sql.assert_called_with(
         sql, database, use_pandas=True, client=-1)
