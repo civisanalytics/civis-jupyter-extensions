@@ -54,13 +54,16 @@ def magic(line, cell=None):
     client = civis.APIClient()
 
     if cell is None:
-        database, *lines = next(csv.reader(
+        reader = csv.reader(
             [line],
             delimiter=" ",
             quotechar='"',
             doublequote=True,
             skipinitialspace=True)
-        )
+        parsed_line = next(reader)
+
+        database, lines = parsed_line[0], parsed_line[1:]
+
         sql = " ".join(lines)
         try:
             # if it's an integer, read_civis_sql will let it pass through
