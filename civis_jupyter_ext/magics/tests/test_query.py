@@ -1,13 +1,8 @@
 import pytest
 import pandas as pd
-import six
+from unittest import mock
 
 from ..query import magic
-
-if six.PY2:
-    import mock
-else:
-    from unittest import mock
 
 
 @pytest.mark.parametrize(
