@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
-## [1.0.0] - 2020-09-??
+## [1.0.0] - 2020-09-01
 
 - Dropped support for Python 2.7 and 3.4 (#10, #12).
 - Updated civisquery magic to support database names with spaces (#10).
