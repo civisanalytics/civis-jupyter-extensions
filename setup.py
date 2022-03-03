@@ -7,12 +7,9 @@ def read(fname):
         return _in.read()
 
 
-__version__ = None
-exec(read('civis_jupyter_ext/version.py'))
-
 setup(
     name="civis-jupyter-extensions",
-    version=__version__,
+    version="1.1.0",
     author="Civis Analytics Inc",
     author_email="opensource@civisanalytics.com",
     url="https://www.civisanalytics.com",

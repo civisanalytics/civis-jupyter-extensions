@@ -1,3 +1,4 @@
-ipython>=5.4,<=6.2.99
+importlib-metadata >= 1.0 ; python_version < '3.8'
+ipython>=5.4
 pandas>=0.20
-civis~=1.6
+civis
