@@ -42,8 +42,8 @@ jobs:
       - run:
           name: Run python tests
           working_directory: ~/
-          # Avoid being able to import civis by relative import.
-          # Test code by importing the *installed* civis in site-packages.
+          # Avoid being able to import the package by relative import.
+          # Test code by importing the *installed* package in site-packages.
           command: |
               pytest -vv --durations=0 --junitxml=/tmp/testxml/report.xml project/civis_jupyter_ext
       - store_test_results:
@@ -77,7 +77,7 @@ workflows:
           command-run: |
             pip install --upgrade bandit && \
             bandit --version && \
-            bandit -r civis_jupyter_ext -x civis_jupyter_ext/magics/tests
+            bandit -r civis_jupyter_ext -x civis_jupyter_ext/magics/tests,civis_jupyter_ext/test_version.py
       - build-python:
           requires:
             - flake8
