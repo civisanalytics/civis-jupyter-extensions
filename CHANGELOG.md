@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## [1.2.0] - 2024-05-30
+
+- Dropped support for Python 3.7 and 3.8, added support for Python 3.11 and 3.12. (#14).
+- Updated packaging to use `pyproject.toml`. (#14)
+
 ## [1.1.0] - 2022-03-08
 
 - Dropped support for Python 3.5 and 3.6, added support for Python 3.9 and 3.10 (#13).

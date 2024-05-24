@@ -1,5 +1,0 @@
-include CHANGELOG.md
-include LICENSE.txt
-include requirements.txt
-include README.rst
-include civis_jupyter_ext/static/*.js

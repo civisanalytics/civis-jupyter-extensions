@@ -12,6 +12,7 @@ def load_ipython_extension(ipython):
 
     for module in _MAGICS:
         ipython.register_magic_function(
-            getattr(module, 'magic'),
-            magic_kind='line_cell',
-            magic_name=getattr(module, 'MAGIC_NAME'))
+            getattr(module, "magic"),
+            magic_kind="line_cell",
+            magic_name=getattr(module, "MAGIC_NAME"),
+        )

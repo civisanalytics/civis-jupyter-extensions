@@ -3,7 +3,8 @@ import csv
 import pandas as pd
 import civis
 
-MAGIC_NAME = 'civisquery'
+
+MAGIC_NAME = "civisquery"
 
 
 def magic(line, cell=None):
@@ -59,7 +60,8 @@ def magic(line, cell=None):
             delimiter=" ",
             quotechar='"',
             doublequote=True,
-            skipinitialspace=True)
+            skipinitialspace=True,
+        )
         parsed_line = next(reader)
 
         database, lines = parsed_line[0], parsed_line[1:]
@@ -75,7 +77,8 @@ def magic(line, cell=None):
             database = database.strip()
 
         df = civis.io.read_civis_sql(
-            sql.strip(), database, use_pandas=True, client=client)
+            sql.strip(), database, use_pandas=True, client=client
+        )
         if len(df) == 0:
             df = None
     else:
@@ -88,12 +91,12 @@ def magic(line, cell=None):
 
         sql = cell
 
-        fut = civis.io.query_civis(
-            sql, database, client=client, preview_rows=100)
+        fut = civis.io.query_civis(sql, database, client=client, preview_rows=100)
         res = fut.result()
-        if len(res['result_rows']) > 0:
+        if len(res["result_rows"]) > 0:
             df = pd.DataFrame.from_records(
-                res['result_rows'], columns=res['result_columns'])
+                res["result_rows"], columns=res["result_columns"]
+            )
         else:
             df = None
 
