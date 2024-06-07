@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.2.0] - 2024-06-12
 
-- Dropped support for Python 3.7 and 3.8, added support for Python 3.11 and 3.12. (#14).
+- Dropped support for Python 3.7 and 3.8, added support for Python >= 3.9. (#14).
 - Updated packaging to use `pyproject.toml`. (#14)
 
 ## [1.1.0] - 2022-03-08
