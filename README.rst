@@ -1,8 +1,13 @@
 civis-jupyter-extensions
 ========================
 
-.. image:: https://travis-ci.org/civisanalytics/civis-jupyter-extensions.svg?branch=master
-    :target: https://travis-ci.org/civisanalytics/civis-jupyter-extensions
+.. image:: https://circleci.com/gh/civisanalytics/civis-jupyter-extensions.svg?style=shield
+   :target: https://circleci.com/gh/civisanalytics/civis-jupyter-extensions
+   :alt: CircleCI build status
+
+.. image:: https://img.shields.io/pypi/v/civis-jupyter-extensions.svg
+   :target: https://pypi.org/project/civis-jupyter-extensions/
+   :alt: Latest version on PyPI
 
 Tools for using the Civis Platform with Jupyter notebooks
 

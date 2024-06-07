@@ -87,4 +87,5 @@ workflows:
             - twine
           matrix:
             parameters:
-              python-version: ["3.9", "3.10", "3.11", "3.12"]
+              # Just use the oldest and latest Python 3.x versions that we support
+              python-version: ["3.9", "3.12"]
